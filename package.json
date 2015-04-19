@@ -1,0 +1,27 @@
+{
+  "name": "es6-playground-react-boilerplate",
+  "version": "0.0.1",
+  "description": "A react quiz component of course!",
+  "main": "dist/react-quiz.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "develop": "./node_modules/.bin/webpack --watch --verbose & npm run server",
+    "lint": "./node_modules/.bin/eslint ./src; true;",
+    "server": "./node_modules/.bin/browser-sync start --config='./bs-config.js'"
+  },
+  "author": "Erik Aybar",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.1.10",
+    "babel-eslint": "^3.0.1",
+    "babel-loader": "^5.0.0",
+    "browser-sync": "^2.6.4",
+    "eslint": "^0.19.0",
+    "eslint-loader": "^0.10.0",
+    "eslint-plugin-react": "^2.1.1",
+    "webpack": "^1.8.5"
+  },
+  "dependencies": {
+    "react": "^0.13.2"
+  }
+}
