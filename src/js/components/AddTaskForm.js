@@ -24,7 +24,14 @@ let AddTaskForm = React.createClass({
   render() {
     return (
       <form className="commentForm" onSubmit={this.onSubmit}>
-        <input ref="newTaskInput" type="text" placeholder="Some Great Task"/>
+        <div className="row">
+          <div className="col-sm-3">
+            <input ref="newTaskInput" className="form-control" type="text" placeholder="Some Great Task"/>
+          </div>
+          <div className="col-sm-2">
+            <button className="btn btn-sm btn-default"><span className="glyphicon glyphicon-ok"></span></button>
+          </div>
+        </div>
       </form>
     );
   }
