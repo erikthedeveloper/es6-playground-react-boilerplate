@@ -5,14 +5,6 @@ let AddTaskForm = React.createClass({
     addTask: React.PropTypes.func.isRequired
   },
 
-  render() {
-    return (
-        <form className="commentForm" onSubmit={this.onSubmit}>
-          <input ref="newTaskInput" type="text" placeholder="Some Great Task"/>
-        </form>
-    );
-  },
-
   onSubmit(e) {
     let input = React.findDOMNode(this.refs.newTaskInput);
     let newTask = {
@@ -27,6 +19,14 @@ let AddTaskForm = React.createClass({
 
     input.value = '';
     input.focus();
+  },
+
+  render() {
+    return (
+      <form className="commentForm" onSubmit={this.onSubmit}>
+        <input ref="newTaskInput" type="text" placeholder="Some Great Task"/>
+      </form>
+    );
   }
 
 });
