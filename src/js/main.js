@@ -12,6 +12,6 @@ let thingsTodo = [
 ];
 
 React.render(
-    <ClicheTodoHelloWorldApp initialTasks={thingsTodo} />,
-    document.getElementById('react_todo_playground')
+    <ClicheTodoHelloWorldApp />,
+    document.getElementById('react_playground')
 );

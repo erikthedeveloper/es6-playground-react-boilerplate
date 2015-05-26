@@ -1,7 +1,7 @@
 {
   "name": "es6-playground-react-boilerplate",
   "version": "0.0.1",
-  "description": "A react quiz component of course!",
+  "description": "A simple React/ES6 boilerplate",
   "main": "dist/react-quiz.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
