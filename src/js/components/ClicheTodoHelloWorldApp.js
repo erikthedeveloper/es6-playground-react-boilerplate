@@ -39,14 +39,14 @@ let ClicheTodoHelloWorldApp = React.createClass({
   },
 
   addTask(newTask) {
-    let tasks = this.state.tasks;
+    let tasks = this.state.tasks.slice(0);
     tasks.push(newTask);
     this.setState({tasks: tasks});
   },
 
   makeOnCheckHandler(task) {
     return (e) => {
-      let tasks = this.state.tasks;
+      let tasks = this.state.tasks.slice(0);
       tasks[tasks.indexOf(task)].complete = e.target.checked;
       this.setState({tasks: tasks});
     };
