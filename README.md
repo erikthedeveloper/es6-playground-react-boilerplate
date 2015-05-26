@@ -16,15 +16,4 @@ TODO: Some more relavent README details here
 
 *Note: You may have to manually reload the page **once** for the first build :)
 
-Read `package.json` for details on `npm run` commands. Currently something along the lines of
-
-```json
-{
-  "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "develop": "./node_modules/.bin/webpack --watch --verbose & npm run server",
-    "lint": "./node_modules/.bin/eslint ./src; true;",
-    "server": "./node_modules/.bin/browser-sync start --config='./bs-config.js'"
-  },
-}
-```
+Read `package.json` for details on `npm run` commands.
