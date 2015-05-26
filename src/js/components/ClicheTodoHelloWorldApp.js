@@ -7,26 +7,34 @@ let ClicheTodoHelloWorldApp = React.createClass({
 
   getInitialState() {
     return {
-      tasks: []
+      tasks: [],
+      loading: false
     };
   },
 
   componentDidMount() {
-    TasksResource.getAll().then((tasks) => this.setState({tasks}));
-  },
-
-  addTask(newTask) {
-    let tasks = this.state.tasks.slice(0);
-    tasks.push(newTask);
-    this.setState({tasks: tasks});
+    this.fetchRemoteTasks();
   },
 
   makeOnCheckHandler(task) {
     return (e) => {
       let tasks = this.state.tasks.slice(0);
       tasks[tasks.indexOf(task)].complete = e.target.checked;
-      this.setState({tasks: tasks});
+      this.setState({tasks});
     };
+  },
+
+  fetchRemoteTasks() {
+    this.setState({loading: true});
+    TasksResource.getAll().then((tasks) => this.setState({tasks, loading: false}));
+  },
+
+  addRemoteTask(newTask) {
+    let tasks = this.state.tasks.slice(0);
+    tasks.push(newTask);
+    this.setState({loading: true});
+
+    TasksResource.addTask(newTask).then(() => this.setState({tasks, loading: false}));
   },
 
   render() {
@@ -37,6 +45,7 @@ let ClicheTodoHelloWorldApp = React.createClass({
 
         <p>
           {tasks.filter((task) => task.complete === true).length} of {tasks.length} tasks complete
+          {(this.state.loading) ? ' loading...' : ''}
         </p>
         <ul className="list-unstyled">
           {tasks.map((task) =>
@@ -47,7 +56,7 @@ let ClicheTodoHelloWorldApp = React.createClass({
               onCheck={this.makeOnCheckHandler(task)}
               />)}
         </ul>
-        <AddTaskForm addTask={this.addTask} />
+        <AddTaskForm addTask={this.addRemoteTask} />
       </div>
     );
   }

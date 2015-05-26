@@ -8,6 +8,9 @@ let DUMMY_TASKS = [
   {title: 'Win Life', complete: true}
 ];
 
+/**
+ * Yes. I know. This is not actually doing anything... but the consuming code doesn't need to know that!
+ */
 let TasksResource = {
 
   /**
@@ -15,10 +18,23 @@ let TasksResource = {
    */
   getAll() {
     return new Promise(function (resolve, reject) {
-      setTimeout(() => resolve(DUMMY_TASKS), 1000);
+      _mockDelay(() => resolve(DUMMY_TASKS));
+    });
+  },
+
+  /**
+   * Asynchronously fetch all tasks from "the server" .... :)
+   */
+  addTask(task) {
+    return new Promise(function (resolve, reject) {
+      _mockDelay(() => resolve(true));
     });
   }
 
 };
+
+function _mockDelay(callback) {
+  setTimeout(callback, Math.random() * 1000);
+}
 
 module.exports = TasksResource;
