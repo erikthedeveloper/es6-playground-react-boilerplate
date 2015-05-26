@@ -1,16 +1,18 @@
-let React       = require('react');
-let TodoItem    = require('./TodoItem');
-let AddTaskForm = require('./AddTaskForm');
+let React         = require('react');
+let TasksResource = require('../util/TasksResource');
+let TodoItem      = require('./TodoItem');
+let AddTaskForm   = require('./AddTaskForm');
 
 let ClicheTodoHelloWorldApp = React.createClass({
-  propTypes: {
-    initialTasks: React.PropTypes.array
-  },
 
   getInitialState() {
     return {
-      tasks: this.props.initialTasks || []
+      tasks: []
     };
+  },
+
+  componentDidMount() {
+    TasksResource.getAll().then((tasks) => this.setState({tasks}));
   },
 
   render() {
